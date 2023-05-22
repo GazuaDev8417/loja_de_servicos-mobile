@@ -33,8 +33,7 @@ export default function List(props){
         headers: {
           Authorization: await AsyncStorage.getItem('id')
         }
-      }).then((res)=>{
-        console.log(res.data)
+      }).then(()=>{
       }).catch(async err=>{
         if(err.response.data === 'jwt expired'){
           await AsyncStorage.clear()
