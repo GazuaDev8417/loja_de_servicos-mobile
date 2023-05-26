@@ -86,6 +86,7 @@ export default function Register(props){
             <TextInput style={styles.input}
               onChangeText={setPhone}
               value={phone}
+              maxLength={11}
               keyboardType='numeric'
               placeholderTextColor={placeholderBackground}
               placeholder='Telefone'

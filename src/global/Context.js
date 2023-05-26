@@ -73,7 +73,6 @@ export const Provider = (props)=>{
     }
 
     token = (await Notifications.getExpoPushTokenAsync()).data
-    console.log(token)  
     
     return token
   }
@@ -87,10 +86,10 @@ export const Provider = (props)=>{
     const body = {
       push_token: expoPushToken
     }
-    axios.put(`${url}/pushtoken/${id}`, body).then(res=>{
-      console.log(res.data)
+    axios.put(`${url}/pushtoken/${id}`, body).then(()=>{
+      
     }).catch(e=>{
-      console.log(e.response.data)
+      alert(e.response.data)
     })
   }
 
@@ -104,10 +103,10 @@ export const Provider = (props)=>{
         title: title,
         body: body 
       }
-      await axios.post('https://exp.host/--/api/v2/push/send', message).then(res=>{
-        console.log(res.data)
+      await axios.post('https://exp.host/--/api/v2/push/send', message).then(()=>{
+        
       }).catch(e=>{
-        console.log(e.response.data)
+        alert(e.response.data)
       })
     })
   }

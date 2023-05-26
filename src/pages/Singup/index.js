@@ -76,7 +76,6 @@ export default function Signup(props){
             <TextInput style={styles.input}
               onChangeText={setPassword}
               value={password}
-              keyboardType='numeric'
               placeholderTextColor={placeholderBackground}
               placeholder='Sua senha'
               secureTextEntry={true}
