@@ -1,9 +1,9 @@
 import { NavigationContainer } from '@react-navigation/native'
-import { createNativeStackNavigator } from '@react-navigation/native-stack'
+import { NativeStackNavigationOptions, createNativeStackNavigator } from '@react-navigation/native-stack'
 import { Provider } from './src/global/Context'
-import Add from 'react-native-vector-icons/Ionicons'
-import ListAlt from 'react-native-vector-icons/FontAwesome'
-import ContactIcon from 'react-native-vector-icons/MaterialCommunityIcons'
+import Add from '@expo/vector-icons/Ionicons'
+import ListAlt from '@expo/vector-icons/FontAwesome'
+import ContactIcon from '@expo/vector-icons/MaterialCommunityIcons'
 import Signup from './src/pages/Singup'
 import Login from './src/pages/Login'
 import List from './src/pages/List'
@@ -19,7 +19,7 @@ import { StatusBar, TouchableOpacity, View } from 'react-native'
 const Stack = createNativeStackNavigator()
 
 
-export default function App(){
+export default function App():JSX.Element{
 
 
   return(
@@ -141,7 +141,8 @@ export default function App(){
   )
 }
 
-const screenOptions = {
+
+const screenOptions:NativeStackNavigationOptions = {
   headerTintColor:'whitesmoke',
   headerStyle: {
     backgroundColor: '#2e2e2e'

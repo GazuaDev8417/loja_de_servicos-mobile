@@ -1,5 +1,5 @@
-import Zap from 'react-native-vector-icons/FontAwesome'
-import ContactIcon from 'react-native-vector-icons/MaterialCommunityIcons'
+import Zap from '@expo/vector-icons/FontAwesome'
+import ContactIcon from '@expo/vector-icons/MaterialCommunityIcons'
 import {
     View,
     Text,
@@ -11,15 +11,16 @@ import {
 
 
 
-export default function ContactUs(props){
+export default function ContactUs(){
 
     return(
         <ImageBackground style={styles.bgImage}
             source={require('../../../assets/terceirizacao.jpg')}>
             <View style={styles.container}>
                 <Text style={styles.txtStyle}>
-                    O aplicativo está em sua fase inicial, então para eventuais
-                    problemas, sugestões ou reclamações. Entre em contato:
+                    Esta aplicação é apenas um demonstrativo.
+                    Se você tem uma ideia de aplicação
+                    para seu empreendimento entre em contato:
                 </Text>
                 <Text style={styles.txtContact}>
                     <TouchableOpacity
@@ -35,7 +36,7 @@ export default function ContactUs(props){
                         )}>
                         <Zap name='whatsapp' size={50} color='green'/>
                     </TouchableOpacity>{'\n'}
-                    71 8470-7037
+                    71 8420-0395
                 </Text>
             </View>
         </ImageBackground>

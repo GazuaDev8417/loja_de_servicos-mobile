@@ -1,9 +1,10 @@
-import React, { useState, useContext, useEffect } from 'react'
+import React, { useState, useContext } from 'react'
 import Context from '../../global/Context'
 import axios from 'axios'
 import { url } from '../../constants/urls'
 import styles from './style'
 import AsyncStorage from '@react-native-async-storage/async-storage'
+import ScreenProps from '../../model/navigationTypes'
 import {
   View,
   ScrollView,
@@ -15,23 +16,22 @@ import {
 
 
 
-export default function Register(props){
-  const { expoPushToken, sendPushNotifications, getAllJobs } = useContext(Context)
-  const [title, setTitle] = useState('')
-  const [description, setDescription] = useState('')
-  const [phone, setPhone] = useState('')
-  const [period, setPeriod] = useState('')
-  const placeholderBackground = 'rgba(255, 255, 255, 0.5)'
+export default function Register(props:ScreenProps<'Register'>){
+  const { getAllJobs } = useContext(Context)
+  const [title, setTitle] = useState<string>('')
+  const [description, setDescription] = useState<string>('')
+  const [phone, setPhone] = useState<string>('')
+  const [period, setPeriod] = useState<string>('')
+  const placeholderBackground:string = 'rgba(255, 255, 255, 0.5)'
   
 
   
-  const registJob = async()=>{
+  const registJob = async():Promise<void>=>{
     const body = {
       title,
       description,
       phone,
-      period,
-      push_token: expoPushToken
+      period
     }
     
     axios({
@@ -52,7 +52,7 @@ export default function Register(props){
   }
 
 
-  const limpar = ()=>{
+  const limpar = ():void=>{
     setDescription('')
     setPeriod('')
     setPhone('')

@@ -1,37 +1,42 @@
-import React, { useState, useContext, useEffect } from 'react'
-import Context from '../../global/Context'
+import React, { useState } from 'react'
 import AsyncStorage from '@react-native-async-storage/async-storage'
 import axios from 'axios'
 import { url } from '../../constants/urls'
+import { styles } from './styled'
+import ScreenProps from '../../model/navigationTypes'
 import {
   View,
   ScrollView,
   Text,
   TextInput,
-  StyleSheet,
   ImageBackground,
   TouchableOpacity,
 } from 'react-native'
 
 
 
-export default function Signup(props){
-  const { expoPushToken } = useContext(Context)
-  const [name, setName] = useState('')
-  const [email, setEmail] = useState('')
-  const [password, setPassword] = useState('')
-  const [verifyPass, setVerifyPass] = useState('')
-  const placeholderBackground = 'rgba(255, 255, 255, 0.5)'
+type Body = {
+  name: string
+  email: string
+  password: string
+  verifyPass: string
+}
+
+export default function Signup(props:ScreenProps<'Signup'>){
+  const [name, setName] = useState<string>('')
+  const [email, setEmail] = useState<string>('')
+  const [password, setPassword] = useState<string>('')
+  const [verifyPass, setVerifyPass] = useState<string>('')
+  const placeholderBackground:string = 'rgba(255, 255, 255, 0.5)'
   
 
   
-  const registUser = ()=>{
-    const body = {
+  const registUser = ():void=>{
+    const body:Body = {
       name,
       email,
       password,
-      verifyPass,
-      push_token: expoPushToken
+      verifyPass
     }
     
     axios.post(`${url}/signup`, body).then(async res=>{
@@ -44,7 +49,7 @@ export default function Signup(props){
   }
 
 
-  const limpar = ()=>{
+  const limpar = ():void=>{
     setName('')
     setEmail('')
     setPassword('')
@@ -108,48 +113,3 @@ export default function Signup(props){
 }
 
 
-const styles = StyleSheet.create({
-    container: {
-      flex: 1,
-      alignItems: 'center',
-      justifyContent: 'center',
-      backgroundColor: 'rgba(0, 0, 0, 0.6)'
-    },
-    bgImage: {
-      flex: 1
-    },
-    formContainer: {
-      marginHorizontal: 20,
-      marginTop: 50
-    },
-    btnContainer: {
-      display: 'flex',
-      flexDirection: 'row',
-      alignItems: 'center',
-      justifyContent: 'center'
-    },
-    btnNav: {
-      alignItems: 'center',
-      justifyContent: 'center',
-      backgroundColor: '#151E3D',
-      width: '45%',
-      height: 40,
-      borderRadius: 20,
-      margin: 10,
-  
-    },
-    txtBtn: {
-      color: 'whitesmoke',
-      fontSize: 15
-    },
-    input: {
-      margin: 10,
-      borderWidth: 1,
-      borderRadius: 10,
-      borderColor: 'whitesmoke',
-      height: 40,
-      fontSize: 18,
-      paddingHorizontal: 15,
-      color: 'whitesmoke'
-    }
-  })

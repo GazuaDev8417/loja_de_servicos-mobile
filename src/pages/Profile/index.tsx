@@ -1,10 +1,11 @@
 import { useEffect, useState, useContext } from "react"
-import Context from '../../global/Context'
+import Context, { Job } from '../../global/Context'
 import axios from 'axios'
 import { url } from "../../constants/urls"
 import AsyncStorage from "@react-native-async-storage/async-storage"
-import Delete from 'react-native-vector-icons/MaterialIcons'
-import Add from 'react-native-vector-icons/Ionicons'
+import Delete from '@expo/vector-icons/MaterialIcons'
+import Add from '@expo/vector-icons/Ionicons'
+import ScreenProps from "../../model/navigationTypes"
 import {
     View,
     Text,
@@ -17,9 +18,9 @@ import {
 
 
 
-export default function Profile(props){
+export default function Profile(props:ScreenProps<'Profile'>){
     const { setJob, user, getProfile } = useContext(Context)
-    const [jobs, setJobs] = useState([])  
+    const [jobs, setJobs] = useState<Job[]>([])  
 
 
 
@@ -42,7 +43,7 @@ export default function Profile(props){
     }
 
 
-    const deleteJob = async(id)=>{
+    const deleteJob = async(id:string)=>{
         axios.delete(`${url}/job/${id}`, {
             headers: {
                 Authorization: await AsyncStorage.getItem('id')
@@ -55,7 +56,7 @@ export default function Profile(props){
     }
 
 
-    const confirmDelJob = (job)=>{
+    const confirmDelJob = (job:Job)=>{
         Alert.alert(
             `Deseja excluir ${job.title}?`,
             'Seu serviço não poderá mais ser visualizado na lista',
@@ -100,8 +101,8 @@ export default function Profile(props){
                 <View style={styles.header}>
                     <Text style={[styles.txtStyle, { marginTop:'5%' }]}>
                         <Text style={{fontWeight:'bold'}}>Nome: </Text>
-                            {user.name}{'\n'}
-                        <Text style={{fontWeight:'bold'}}>Email: </Text>{user.email}
+                            {user?.name}{'\n'}
+                        <Text style={{fontWeight:'bold'}}>Email: </Text>{user?.email}
                     </Text>
                     <TouchableOpacity onPress={logout}>
                         <Delete name="logout" size={25} color='whitesmoke'/>

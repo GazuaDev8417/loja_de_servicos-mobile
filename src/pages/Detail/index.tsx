@@ -1,10 +1,10 @@
-import { useContext, useEffect } from "react"
+import { useContext } from "react"
 import Context from "../../global/Context"
 // import AsyncStorage from "@react-native-async-storage/async-storage"
 import { convertPhone } from "../../utils/convertPhone"
 import * as Contacts from 'expo-contacts'
-import Add from 'react-native-vector-icons/Entypo'
-import Zap from 'react-native-vector-icons/FontAwesome'
+import Add from '@expo/vector-icons/Entypo'
+import Zap from '@expo/vector-icons/FontAwesome'
 // import AddPic from 'react-native-vector-icons/MaterialIcons'
 // import * as ImagePicker from 'expo-image-picker'
 // import { Video } from "expo-av"
@@ -26,8 +26,10 @@ import {
 
 
 
-export default function Detail(props){
-    const { job, user } = useContext(Context)
+
+
+export default function Detail(){
+    const { job } = useContext(Context)
     const message = `Olá, vi seu serviço anunciado no aplicativo Loja de Serviços e gostaria de contratá-lo`
     // const videoRef = useRef(null)
     // const [images, setImages] = useState([])
@@ -61,14 +63,19 @@ export default function Detail(props){
     // }
 
     
-    const addContact = async()=>{
+    const addContact = async():Promise<void>=>{
         const { status } = await Contacts.requestPermissionsAsync()
-        if(status === 'granted'){
+        if(status === 'granted' && job?.title && job?.phone){
             await Contacts.presentFormAsync(null, {
+                id: Date.now().toString(18),
+                name: "",
+                contactType: "person",
                 [Contacts.Fields.Company]: job.title,
                 [Contacts.Fields.PhoneNumbers]: [
                     {
-                        number: `${job.phone}`
+                        id: Date.now().toString(18),
+                        label: Contacts.Fields.PhoneticFirstName,
+                        number: `${job?.phone}`
                     }
                 ]
             })

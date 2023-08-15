@@ -6,6 +6,7 @@ import { url } from '../../constants/urls'
 import { convertPhone } from '../../utils/convertPhone'
 import { Searchbar } from 'react-native-paper'
 import styles from './style'
+import ScreenProps from '../../model/navigationTypes'
 import {
   View,
   Text,
@@ -18,7 +19,7 @@ import {
 
 
 
-export default function List(props){
+export default function List(props:ScreenProps<'List'>){
   const { getAllJobs, jobs, setJob } = useContext(Context)  
   const [refreshing, setRefreshing] = useState(false)
   const [searchWord, setSearchWord] = useState('')

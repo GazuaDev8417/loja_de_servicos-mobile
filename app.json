@@ -1,8 +1,8 @@
 {
   "expo": {
-    "name": "Loja de Serviços",
-    "slug": "achei-servicos",
-    "version": "1.1.2",
+    "name": "loja_de_servicos-mobile",
+    "slug": "loja_de_servicos-mobile",
+    "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",
@@ -10,9 +10,6 @@
       "image": "./assets/splash.png",
       "resizeMode": "contain",
       "backgroundColor": "#151E3D"
-    },
-    "updates": {
-      "fallbackToCacheTimeout": 0
     },
     "assetBundlePatterns": [
       "**/*"
@@ -25,21 +22,13 @@
         "foregroundImage": "./assets/icon.png",
         "backgroundColor": "#151E3D"
       },
-      "versionCode": 13,
       "permissions": [
         "android.permission.READ_CONTACTS",
         "android.permission.WRITE_CONTACTS"
-      ],
-      "package": "com.gazua300.acheiservicos",
-      "googleServicesFile": "./google-services.json"
+      ]
     },
     "web": {
       "favicon": "./assets/favicon.png"
-    },
-    "extra": {
-      "eas": {
-        "projectId": "6915269d-56a4-4965-8c03-31d619802b4b"
-      }
     }
   }
 }

@@ -1,8 +1,11 @@
-import { useEffect } from 'react';
-import LottieView from 'lottie-react-native';
-import { StyleSheet, View, ImageBackground } from 'react-native';
+import React, { useEffect } from 'react'
+import LottieView from 'lottie-react-native'
+import { StyleSheet, View, ImageBackground } from 'react-native'
+import ScreenProps from '../../model/navigationTypes'
 
-export default function Splash(props) {
+
+
+export default function Splash(props:ScreenProps<'Splash'>) {
   
 
   useEffect(()=>{

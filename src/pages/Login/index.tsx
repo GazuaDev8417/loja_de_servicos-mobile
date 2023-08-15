@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import AsyncStorage from '@react-native-async-storage/async-storage'
 import axios from 'axios'
 import { url } from '../../constants/urls'
+import ScreenProps from '../../model/navigationTypes'
 import {
   View,
   ScrollView,
@@ -14,27 +15,32 @@ import {
 
 
 
-export default function Login(props){
-  const [email, setEmail] = useState('visitante@email.com')
-  const [password, setPassword] = useState('123456')
-  const placeholderBackground = 'rgba(255, 255, 255, 0.5)'
+type Body = {
+  email: string
+  password: string
+}
+
+export default function Login(props:ScreenProps<'Login'>){
+  const [email, setEmail] = useState<string>('visitante@email.com')
+  const [password, setPassword] = useState<string>('123456')
+  const placeholderBackground:string = 'rgba(255, 255, 255, 0.5)'
 
 
 
   useEffect(()=>{
     (async()=>{
-        const token = await AsyncStorage.getItem('id')
+        const token:string | null = await AsyncStorage.getItem('id')
 
         if(token){
             props.navigation.navigate('List')
         }
     })()
-  }, [])
+  }, []) 
   
 
   
-  const login = ()=>{
-    const body = {
+  const login = ():void=>{
+    const body:Body = {
       email,
       password
     }
