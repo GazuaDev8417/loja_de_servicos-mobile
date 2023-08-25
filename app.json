@@ -25,10 +25,16 @@
       "permissions": [
         "android.permission.READ_CONTACTS",
         "android.permission.WRITE_CONTACTS"
-      ]
+      ],
+      "package": "com.gazua300.loja_de_servicosmobile"
     },
     "web": {
       "favicon": "./assets/favicon.png"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "f5376c41-0203-4178-adee-0dd650dbdd36"
+      }
     }
   }
 }

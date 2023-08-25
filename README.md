@@ -8,5 +8,3 @@ Aplicativo móvel para cadastramento e publicação de serviços.
 <br><br>
 <img src='./imgREADME/lista.jpeg' width='200'>
 <img src='./imgREADME/cadastramento.jpeg' width='200'>
-
->https://play.google.com/store/apps/details?id=com.gazua300.acheiservicos
