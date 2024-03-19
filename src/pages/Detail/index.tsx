@@ -1,3 +1,4 @@
+import React from "react"
 import { useContext } from "react"
 import Context from "../../global/Context"
 // import AsyncStorage from "@react-native-async-storage/async-storage"

@@ -1,3 +1,4 @@
+import React from 'react'
 import Zap from '@expo/vector-icons/FontAwesome'
 import ContactIcon from '@expo/vector-icons/MaterialCommunityIcons'
 import {

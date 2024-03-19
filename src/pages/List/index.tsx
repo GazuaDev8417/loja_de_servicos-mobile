@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useContext, useCallback } from 'react'
 import AsyncStorage from '@react-native-async-storage/async-storage'
-import Context from '../../global/Context'
+import Context, { Job } from '../../global/Context'
 import axios from 'axios'
 import { url } from '../../constants/urls'
 import { convertPhone } from '../../utils/convertPhone'
@@ -61,7 +61,7 @@ export default function List(props:ScreenProps<'List'>){
   })
   
 
-  const wait = (timout)=>{    
+  const wait = (timout:number)=>{    
     return new Promise(resolve => setTimeout(resolve, timout))
   }
 
@@ -75,7 +75,7 @@ export default function List(props:ScreenProps<'List'>){
   
 
 
-  const getJobById = async(job)=>{
+  const getJobById = async(job:Job)=>{
     axios.get(`${url}/job/${job.id}`, {
       headers: {
         Authorization: await AsyncStorage.getItem('id')
@@ -105,7 +105,7 @@ export default function List(props:ScreenProps<'List'>){
           marginHorizontal:10}} 
           placeholder='Título do serviço'
           placeholderTextColor='rgba(255, 255, 255, 0.5)' 
-          color='white'
+         // color='white'
           onChangeText={setSearchWord}
           value={searchWord}
           />

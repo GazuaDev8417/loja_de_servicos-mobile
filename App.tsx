@@ -1,3 +1,4 @@
+import React from 'react'
 import { NavigationContainer } from '@react-navigation/native'
 import { NativeStackNavigationOptions, createNativeStackNavigator } from '@react-navigation/native-stack'
 import { Provider } from './src/global/Context'
@@ -16,6 +17,7 @@ import { StatusBar, TouchableOpacity, View } from 'react-native'
 
 
 
+
 const Stack = createNativeStackNavigator()
 
 
@@ -29,23 +31,16 @@ export default function App():JSX.Element{
               barStyle='light-content'/>
             
             <Stack.Navigator
-              initialRouteName='Splash'
+              initialRouteName='login'
               screenOptions={screenOptions}>
             
-            <Stack.Screen
+            {/* <Stack.Screen
                 name='Splash'
                 component={Splash}
                 options={({navigation})=> ({
                   headerShown: false
-                })}/> 
+                })}/> */} 
 
-            <Stack.Screen
-              name='Signup'
-              component={Signup}
-              options={{
-                title:'Criar conta'
-              }}/>
-            
             <Stack.Screen
               name='Login'
               component={Login}
@@ -53,6 +48,13 @@ export default function App():JSX.Element{
                 headerLeft: ()=>(
                   <View/>
                 )
+              }}/>
+            
+            <Stack.Screen
+              name='Signup'
+              component={Signup}
+              options={{
+                title:'Criar conta'
               }}/>
               
             <Stack.Screen

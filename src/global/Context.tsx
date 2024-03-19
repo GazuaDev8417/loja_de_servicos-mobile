@@ -30,18 +30,31 @@ interface GlobaStateProps{
 interface GlobalStateContext{
   getAllJobs: ()=> void
   jobs:Job[]
-  job:Job | undefined
-  setJob:React.Dispatch<React.SetStateAction<Job | undefined>>
-  user:User | undefined
+  job:Job
+  setJob:React.Dispatch<React.SetStateAction<Job>>
+  user:User
   getProfile: ()=> void
 }
 
 const defaultContextValue:GlobalStateContext = {
   getAllJobs: ()=> {},
   jobs:[],
-  job:undefined,
+  job:{
+    id:'',
+    title:'',
+    description:'',
+    phone:0,
+    period:'',
+    provider:'',
+  },
   setJob: ()=>{},
-  user:undefined,
+  user:{
+    id:'',
+    name:'',
+    email:'',
+    password:'',
+    subscription:''
+  },
   getProfile: ()=> {}
 }
 
@@ -50,8 +63,21 @@ const Context = createContext<GlobalStateContext>(defaultContextValue)
 
 export const Provider = (props:GlobaStateProps)=>{
   const [jobs, setJobs] = useState<Job[]>([])
-  const [job, setJob] = useState<Job | undefined>()
-  const [user, setUser] = useState<User | undefined>()
+  const [job, setJob] = useState<Job>({
+    id:'',
+    title:'',
+    description:'',
+    phone:0,
+    period:'',
+    provider:'',
+  })
+  const [user, setUser] = useState<User>({
+    id:'',
+    name:'',
+    email:'',
+    password:'',
+    subscription:''
+  })
   
 
   
@@ -85,12 +111,7 @@ export const Provider = (props:GlobaStateProps)=>{
 
     
   return<Context.Provider value={{
-    getAllJobs,
-    jobs,
-    job,
-    setJob,
-    user,
-    getProfile,
+      getAllJobs, jobs, job, setJob, user, getProfile,
   }}>
           { props.children }
         </Context.Provider>
