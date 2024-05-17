@@ -21,7 +21,7 @@ export default function ContactUs(){
                 <Text style={styles.txtStyle}>
                     Esta aplicação é apenas um demonstrativo.
                     Se você tem uma ideia de aplicação
-                    para seu empreendimento entre em contato:
+                    para sua empresa ou empreendimento entre em contato:
                 </Text>
                 <Text style={styles.txtContact}>
                     <TouchableOpacity
@@ -33,11 +33,11 @@ export default function ContactUs(){
                     francadasilvaflamarion@gmail.com{'\n\n\n'}
                     <TouchableOpacity
                         onPress={()=> Linking.openURL(
-                            `https://api.whatsapp.com/send?phone=5571984707037`
+                            `https://api.whatsapp.com/send?phone=5571984407882`
                         )}>
                         <Zap name='whatsapp' size={50} color='green'/>
                     </TouchableOpacity>{'\n'}
-                    71 8420-0395
+                    71 8440-7882
                 </Text>
             </View>
         </ImageBackground>

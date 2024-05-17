@@ -1,6 +1,7 @@
 import React from 'react'
 import { NavigationContainer } from '@react-navigation/native'
 import { NativeStackNavigationOptions, createNativeStackNavigator } from '@react-navigation/native-stack'
+//import { createDrawerNavigator } from "@react-navigation/drawer"
 import { Provider } from './src/global/Context'
 import Add from '@expo/vector-icons/Ionicons'
 import ListAlt from '@expo/vector-icons/FontAwesome'
@@ -12,13 +13,30 @@ import Register from './src/pages/Register'
 import Detail from './src/pages/Detail'
 import Profile from './src/pages/Profile'
 import ContactUs from './src/pages/ContactUs'
-import Splash from './src/pages/splash/Splash'
+/* import Splash from './src/pages/splash/Splash' */
 import { StatusBar, TouchableOpacity, View } from 'react-native'
 
 
 
 
 const Stack = createNativeStackNavigator()
+//const Drawer = createDrawerNavigator()
+
+
+/* function MyDrawer(){
+  return(
+    <Drawer.Navigator
+      screenOptions={{
+        headerTitleAlign: 'center'
+      }}>
+
+      <Drawer.Screen
+        name='Profile'
+        component={Profile}
+        />
+    </Drawer.Navigator>
+  )
+} */
 
 
 export default function App():JSX.Element{
@@ -39,7 +57,7 @@ export default function App():JSX.Element{
                 component={Splash}
                 options={({navigation})=> ({
                   headerShown: false
-                })}/> */} 
+                })}/>  */}
 
             <Stack.Screen
               name='Login'
@@ -136,7 +154,15 @@ export default function App():JSX.Element{
                     <Add name='add-circle' size={30} color='whitesmoke'/>
                   </TouchableOpacity>
                 )
-              })} />                
+              })} />   
+
+            {/* <Stack.Screen
+              name='MyDrawer'
+              component={MyDrawer}
+              options={{
+                headerShown: false
+              }}/> */}
+
             </Stack.Navigator>
           </NavigationContainer>
         </Provider>
