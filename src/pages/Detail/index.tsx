@@ -2,6 +2,7 @@ import React from "react"
 import { useContext } from "react"
 import Context from "../../global/Context"
 // import AsyncStorage from "@react-native-async-storage/async-storage"
+import * as Permissions from 'expo-permissions'
 import { convertPhone } from "../../utils/convertPhone"
 import * as Contacts from 'expo-contacts'
 import Add from '@expo/vector-icons/Entypo'
@@ -64,7 +65,7 @@ export default function Detail(){
     // }
 
     
-    const addContact = async():Promise<void>=>{
+    /* const addContact = async():Promise<void>=>{
         const { status } = await Contacts.requestPermissionsAsync()
         if(status === 'granted' && job?.title && job?.phone){
             await Contacts.presentFormAsync(null, {
@@ -96,6 +97,20 @@ export default function Detail(){
 
             )
         }        
+    } */
+
+    const addContact = async():Promise<void>=>{
+        const { status } = await Contacts.requestPermissionsAsync()
+        if(status === 'granted'){
+            await Contacts.addContactAsync({
+                name: job.title,
+                phoneNumbers: [{
+                    label: 'work',
+                    number: job.phone
+                }],
+                contactType: "person"
+            })
+        }
     }
 
 

@@ -38,6 +38,10 @@ export default function Signup(props:ScreenProps<'Signup'>){
       password,
       verifyPass
     }
+
+    if(password !== verifyPass){
+      return alert('As senhas não conincidem')
+    }
     
     axios.post(`${url}/signup`, body).then(async res=>{
       await AsyncStorage.setItem('id', res.data)

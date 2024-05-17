@@ -10,7 +10,7 @@ export interface Job{
   id:string
   title:string
   description:string
-  phone:number
+  phone:string
   period:string
   provider:string
 }
