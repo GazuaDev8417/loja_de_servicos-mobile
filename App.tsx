@@ -13,7 +13,7 @@ import Register from './src/pages/Register'
 import Detail from './src/pages/Detail'
 import Profile from './src/pages/Profile'
 import ContactUs from './src/pages/ContactUs'
-/* import Splash from './src/pages/splash/Splash' */
+//import Splash from './src/pages/splash/Splash'
 import { StatusBar, TouchableOpacity, View } from 'react-native'
 
 
@@ -49,7 +49,7 @@ export default function App():JSX.Element{
               barStyle='light-content'/>
             
             <Stack.Navigator
-              initialRouteName='login'
+              initialRouteName='Login'
               screenOptions={screenOptions}>
             
             {/* <Stack.Screen
@@ -57,7 +57,7 @@ export default function App():JSX.Element{
                 component={Splash}
                 options={({navigation})=> ({
                   headerShown: false
-                })}/>  */}
+                })}/> */}
 
             <Stack.Screen
               name='Login'
