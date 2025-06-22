@@ -17,6 +17,7 @@
     "axios": "^1.6.8",
     "expo": "^51.0.8",
     "expo-contacts": "^13.0.3",
+    "expo-dev-client": "~4.0.29",
     "expo-status-bar": "^1.12.1",
     "lottie-react-native": "^6.5.1",
     "react": "18.2.0",

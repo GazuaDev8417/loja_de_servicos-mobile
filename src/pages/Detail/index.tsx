@@ -2,7 +2,6 @@ import React from "react"
 import { useContext } from "react"
 import Context from "../../global/Context"
 // import AsyncStorage from "@react-native-async-storage/async-storage"
-import * as Permissions from 'expo-permissions'
 import { convertPhone } from "../../utils/convertPhone"
 import * as Contacts from 'expo-contacts'
 import Add from '@expo/vector-icons/Entypo'
@@ -100,17 +99,43 @@ export default function Detail(){
     } */
 
     const addContact = async():Promise<void>=>{
-        const { status } = await Contacts.requestPermissionsAsync()
-        if(status === 'granted'){
+        try{
+            const { status } = await Contacts.requestPermissionsAsync()
+            if(status !== 'granted'){
+                alert('Permissão para acessar contatos negada')
+                return
+            }
+
             await Contacts.addContactAsync({
                 name: job.title,
-                phoneNumbers: [{
-                    label: 'work',
-                    number: job.phone
-                }],
-                contactType: "person"
+                firstName: job.title,
+                phoneNumbers: [
+                    {
+                        label: 'mobile',
+                        number: job.phone,
+                    },
+                ],
+                contactType: Contacts.ContactTypes.Person
             })
-        }
+        }catch(e){
+            console.error(`Erro ao adicionar contato: ${e}`)
+        }        
+    }
+
+    const handleAddContact = ()=>{
+        Alert.alert(
+            'Salvar contato',
+            `O contato ${job.title} será salvo com o número ${job.phone}`,
+            [
+                {
+                    text:'Cancelar'
+                },
+                {
+                    text:'Ok',
+                    onPress: addContact
+                }
+            ]
+        )
     }
 
 
@@ -241,7 +266,7 @@ export default function Detail(){
                         </View>
                         <View style={styles.iconsContainer}>
                             <TouchableOpacity
-                                onPress={addContact}>
+                                onPress={handleAddContact}>
                                 <Add name="add-user" size={30} color='rgba(250,250,250,0.7)'/>
                             </TouchableOpacity>
                             <TouchableOpacity

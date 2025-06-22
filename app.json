@@ -33,8 +33,8 @@
       },
       "versionCode": 3,
       "permissions": [
-        "android.permission.READ_CONTACTS",
-        "android.permission.WRITE_CONTACTS"
+        "READ_CONTACTS",
+        "WRITE_CONTACTS"
       ],
       "package": "com.gazua300.loja_de_servicosmobile"
     },
